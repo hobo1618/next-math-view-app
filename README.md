@@ -6,7 +6,16 @@ Next JS v12 doesn't allow global css imports from anywhere other than the \_app.
 
 1.  move the fonts directory from the `mathlive` package to the `styles/` directory
 2.  move the `mathlive-fonts.css` and `mathlive-static.css` files from the `mathlive` package to the `styles/` directory.
-3.  delete all imports of css files from `react-math-view`
+3.  comment out / delete first line (css import) in `node_modules/react-math-view/dist/index.modern.js`
+
+```javascript
+
+// import 'mathlive/dist/mathlive-fonts.css'  // comment out line 1
+import 'mathlive/dist/mathlive.min'; // keep this
+...
+
+```
+
 4.  in the \_app.ts file, import `mathlive-fonts.css` and `mathlive-static.css`.
 5.  if successful, you should get this error: `ReferenceError: HTMLElement is not defined`. This is a good thing. We are making progress.
 
