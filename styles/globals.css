@@ -1,26 +1,22 @@
-html,
 body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  /* this has no effect */
+  /* --keyboard-background: rgb(23, 23, 200); */
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.ML__keyboard--plate {
+  --keyboard-background: rgb(23, 23, 23);
+  --keyboard-text: rgb(230, 230, 230);
+  --keycap-background: rgb(40, 40, 40);
+  --keycap-text: rgb(230, 230, 230);
+  --keycap-background-border: rgb(20,20,20)
+  --keycap-background-active: rgb(30,30,30)
 }
 
-* {
-  box-sizing: border-box;
+.action {
+  --keycap-modifier-background: rgb(100,100,100)
 }
 
-@media (prefers-color-scheme: dark) {
-  html {
-    color-scheme: dark;
-  }
-  body {
-    color: white;
-    background: black;
-  }
+.keycap {
+  --keycap-text-active: rgb(23, 230, 23);
+  --keycap-background-active: rgb(100,100,100)
 }

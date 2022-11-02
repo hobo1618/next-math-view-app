@@ -1,34 +1,10 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Example of shared, customized keyboard using react-math-view in NextJS v12
+## Handling Fonts & Other CSS imports
+Next JS v12 doesn't allow global css imports from anywhere other than the _app.ts file. If you simply try running a <MathView> component, therefore, you'll get an error stating that global css cannot be imported from inside node_modules. The solution (hack?) is to
+ 1. move the fonts directory from the `mathlive` package to the `styles/` directory
+ 2. move the `mathlive-fonts.css` and `mathlive-static.css` from the `mathlive` package to the `styles/` directory.
+ 3. delete all imports of css files from `react-math-view` 
+ 4. in the _app.ts file, import the `mathlive-fonts.css` and `mathlive-static.css`
+ 5. if successful, you should get this error: `ReferenceError: HTMLElement is not defined`
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-npm run dev
-# or
-yarn dev
-```
-
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `pages/index.tsx`. The page auto-updates as you edit the file.
-
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.ts`.
-
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+ ## Fixing the `ReferenceError: HTMLElement is not defined`
