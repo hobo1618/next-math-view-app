@@ -1,6 +1,8 @@
 import { useRef, useEffect, useState } from "react";
-import MathView, { MathViewRef } from "react-math-view";
-import { makeSharedVirtualKeyboard } from "mathlive";
+import MathView from "../react-math-view";
+import { MathViewRef } from "../types";
+
+import { makeSharedVirtualKeyboard } from "../mathlive";
 import { HIGH_SCHOOL_KEYBOARD, HIGH_SCHOOL_KEYBOARD_LAYER } from "../keyboard";
 
 makeSharedVirtualKeyboard()
