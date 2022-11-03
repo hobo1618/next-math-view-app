@@ -4,20 +4,33 @@
 
 Next JS v12 doesn't allow global css imports from anywhere other than the \_app.ts file. If you simply try running a <MathView> component, therefore, you'll get an error stating that global css cannot be imported from inside node_modules. The solution (hack?) is to
 
-1.  move the fonts directory from the `mathlive` package to the `styles/` directory
-2.  move the `mathlive-fonts.css` and `mathlive-static.css` files from the `mathlive` package to the `styles/` directory.
-3.  comment out / delete first line (css import) in `node_modules/react-math-view/dist/index.modern.js`
+ 1.  move the fonts directory from the `mathlive` package to the `styles/` directory
+ 2.  move the `mathlive-fonts.css` and `mathlive-static.css` files from the `mathlive` package to the `styles/` directory.
+ 3.  comment out / delete first line (css import) in `node_modules/react-math-view/dist/index.modern.js`
 
 ```javascript
+node_modules/react-math-view/dist/index.modern.js
 
 // import 'mathlive/dist/mathlive-fonts.css'  // comment out line 1
 import 'mathlive/dist/mathlive.min'; // keep this
 ...
 
 ```
+ 4.  comment out / delete the third line (css import) in `node_modules/react-math-view/dist/index.js`
 
-4.  in the \_app.ts file, import `mathlive-fonts.css` and `mathlive-static.css`.
-5.  if successful, you should get this error: `ReferenceError: HTMLElement is not defined`. This is a good thing. We are making progress.
+```javascript
+node_modules/react-math-view/dist/index.modern.js
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; } // keep this
+
+// require('mathlive/dist/mathlive-fonts.css');  // comment out this line
+require('mathlive/dist/mathlive.min'); // keep this
+...
+
+```
+
+ 5.  in the \_app.ts file, import `mathlive-fonts.css` and `mathlive-static.css`.
+ 6.  if successful, you should get this error: `ReferenceError: HTMLElement is not defined`. This is a good thing. We are making progress.
 
 ## Fixing the `ReferenceError: HTMLElement is not defined`
 
